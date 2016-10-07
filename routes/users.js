@@ -8,10 +8,12 @@ const config = require('../knexfile.js')[environment];
 const knex = require('knex')(config);
 
 router.get('/:id', function (req, res) {
-  let userLoggedIn = req.session.user.id;
+  let userLoggedIn = req.session.user;
   let userID = req.params.id
-  knex('posts').where('user_id', userID).then(function (posts) {
-    res.render('userpage', {posts:posts});
+  knex('users').where('id', userID).first().then(function (user) {
+    knex('posts').where('user_id', userID).then(function (posts) {
+      res.render('userpage', {posts:posts, user:user, userLoggedIn:userLoggedIn});
+    });
   });
 });
 

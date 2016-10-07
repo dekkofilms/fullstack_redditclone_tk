@@ -32,7 +32,7 @@ const posts = require('./routes/posts');
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-  res.send('hi');
+  res.redirect('/auth/login');
 });
 
 

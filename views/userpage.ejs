@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Welcome Username!</title>
+  <title><%=user.first_name%></title>
 </head>
 <body>
-  <h1>Hello Username</h1>
-  <h3>Your Post:</h3>
+  <a href="/posts">Home</a>
+  <%if (userLoggedIn.id === user.id) {%>
+    <h1>Me</h1>
+  <%} else { %>
+    <h1><%=user.first_name%></h1>
+  <%} %>
+
+  <h3>Posts:</h3>
   <ul>
     <% posts.forEach(function (post) { %>
       <li><%=post.content%></li>

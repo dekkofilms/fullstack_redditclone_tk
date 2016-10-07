@@ -18,8 +18,9 @@ router.post('/comment', function (req, res) {
 });
 
 router.get('/', function (req, res) {
+  let userLoggedIn = req.session.user;
   knex('posts').then(function (posts) {
-    res.render('posts', {posts:posts});
+    res.render('posts', {posts:posts, userLoggedIn:userLoggedIn});
   });
 });
 
