@@ -47,7 +47,7 @@ router.get('/create', function (req, res) {
 
 router.post('/create', function (req, res) {
   let userLoggedIn = req.session.user.id;
-  knex('posts').insert({content: req.body.content, link: req.body.link, user_id: userLoggedIn, img_url: req.body.img_url}).then(function () {
+  knex('posts').insert({title: req.body.title, content: req.body.content, link: req.body.link, user_id: userLoggedIn, img_url: req.body.img_url}).then(function () {
     res.redirect('/posts');
   });
 });

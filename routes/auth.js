@@ -52,4 +52,10 @@ router.post('/login', function (req, res) {
   });
 });
 
+router.get('/logout', function (req, res) {
+  req.session = null;
+  res.clearCookie('loggedIn');
+  res.redirect('/');
+});
+
 module.exports = router;

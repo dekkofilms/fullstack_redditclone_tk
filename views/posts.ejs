@@ -7,12 +7,16 @@
   <title>Posts!</title>
 </head>
 <body>
-  <a href="/users/<%=userLoggedIn.id%>">Your Page</a>
+  <a href="/users/<%=userLoggedIn.id%>">Your Page</a> |
+  <a href="/posts/create">Create a Post</a>
+  <form method="GET" action="/auth/logout">
+    <input type="submit" value="Logout">
+  </form>
   <h1>Welcome <%=userLoggedIn.first_name%></h1>
   <h3>Posts:</h3>
   <ul>
     <% posts.forEach(function (post) { %>
-      <li><%=post.content%></li>
+      <li><%=post.title%></li>
       <% }) %>
   </ul>
 </body>
