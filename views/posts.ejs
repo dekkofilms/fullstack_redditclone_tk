@@ -13,10 +13,16 @@
     <input type="submit" value="Logout">
   </form>
   <h1>Welcome <%=userLoggedIn.first_name%></h1>
-  <h3>Posts:</h3>
+  <h2>Posts:</h2>
   <ul>
     <% posts.forEach(function (post) { %>
-      <li><%=post.title%></li>
+      <li>
+        <h3><%=post.title%></h3>
+        <%=post.content%>
+        <form method="GET" action="/posts/<%=post.id%>">
+          <input type="submit" value="See More">
+        </form>
+      </li>
       <% }) %>
   </ul>
 </body>

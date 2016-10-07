@@ -53,11 +53,14 @@ router.post('/create', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
+  let userLoggedIn = req.session.user.id;
   let postID = req.params.id
   knex('posts').where('id', postID).first().then(function (post) {
     knex('comments').where('post_id', postID).then(function (comments) {
       knex('users').where('id', post.user_id).first().then(function (user) {
-        res.render('postpage', {post:post, comments:comments, user:user})
+        console.log('Post is ' + post.id);
+        console.log('User Id logged in is ' + userLoggedIn);
+        res.render('postpage', {post:post, comments:comments, user:user, userLoggedIn:userLoggedIn})
       });
     });
   });
