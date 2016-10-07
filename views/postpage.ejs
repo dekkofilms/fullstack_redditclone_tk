@@ -15,7 +15,13 @@
   <ul>
     <% comments.forEach(function (comment) { %>
       <li><%=comment.content%></li>
-      <% }) %>
+      <% if (userLoggedIn === comment.user_id) { %>
+        <form method="post" action="/posts/comment?_method=DELETE">
+          <input type="hidden" name="id" value="<%=comment.id%>">
+          <input type="submit" value="x">
+        </form>
+      <% } %>
+    <% }) %>
   </ul>
   <form method="POST" action="/posts/comment">
     <label for="content">Add a comment:</label>

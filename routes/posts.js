@@ -17,6 +17,12 @@ router.post('/comment', function (req, res) {
   });
 });
 
+router.delete('/comment', function (req, res) {
+  knex('comments').where('id', req.body.id).del().then(function () {
+    res.redirect('back');
+  });
+});
+
 router.get('/', function (req, res) {
   let userLoggedIn = req.session.user;
   knex('posts').then(function (posts) {
@@ -65,34 +71,5 @@ router.get('/:id', function (req, res) {
     });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
