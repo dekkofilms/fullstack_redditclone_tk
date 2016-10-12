@@ -3,6 +3,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const pg = require('pg');
 
 const environment = process.env.NODE_ENV;
 const config = require('./knexfile.js')[environment];
